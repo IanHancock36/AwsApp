@@ -23,7 +23,10 @@ const AddTodoModal = ({ modalVisible, setModalVisible }) => {
   const [description, setDescription] = useState('');
 
   async function addTodo() {
-    //to be filled in a later step
+    await DataStore.save(new Todo({ name, description, isComplete: false }))
+    setModalVisible(false)
+    setName("")
+    setDescription("")
   }
 
   function closeModal() {
@@ -65,15 +68,32 @@ const TodoList = () => {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    //to be filled in a later step
+    const subscription = DataStore.observeQuery(Todo).subscribe((snapshot) => {
+      const { items, isSynced } = snapshot;
+      setTodos(items)
+      return function cleanUp() {
+        subscription.unsubscribe()
+      }
+
+    })
   }, []);
 
   async function deleteTodo(todo) {
-    //to be filled in a later step
+    try{
+      await DataStore.delete(todo)
+    }catch (error){
+      console.log("Delete Failed: $error")
+    }
   }
-
+// Updating this data appears to be the same as creating a new one
   async function setComplete(updateValue, todo) {
-    //to be filled in a later step
+     //update the todo item with updateValue
+     await DataStore.save(
+      Todo.copyOf(todo, updated =>{
+        updated.isComplete = updateValue
+      })
+     )
+
   }
 
   const renderItem = ({ item }) => (
