@@ -12,6 +12,7 @@ import {
 import { DataStore } from 'aws-amplify';
 import { Todo } from './src/models';
 
+
 const Header = () => (
   <View style={styles.headerContainer}>
     <Text style={styles.headerTitle}>My Todo List</Text>
@@ -95,6 +96,13 @@ const TodoList = () => {
      )
 
   }
+//   await DataStore.save(
+//     new Todo({
+// 		"name": "Lorem ipsum dolor sit amet",
+// 		"description": "Lorem ipsum dolor sit amet",
+// 		"isComplete": true
+// 	})
+// );
 
   const renderItem = ({ item }) => (
     <Pressable

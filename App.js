@@ -5,6 +5,7 @@ import awsconfig from './src/aws-exports';
 import Home from './Home';
 Amplify.configure(awsconfig)
 
+
 export default function App() {
   return (
     <View style={styles.container}>

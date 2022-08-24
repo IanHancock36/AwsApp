@@ -12,7 +12,7 @@ export declare class Todo {
   readonly id: string;
   readonly name: string;
   readonly description?: string | null;
-  readonly isComplete: boolean;
+  readonly isComplete?: boolean | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<Todo, TodoMetaData>);

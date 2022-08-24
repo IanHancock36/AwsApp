@@ -28,7 +28,7 @@ export const schema = {
                     "name": "isComplete",
                     "isArray": false,
                     "type": "Boolean",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "createdAt": {
@@ -76,5 +76,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "192dc2721d3d4ec971acb378f8054cdf"
+    "version": "671e864603609644a01cbf06dd6096dc"
 };
